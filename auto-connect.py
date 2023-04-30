@@ -27,6 +27,12 @@ class AutoConnectPlugin(octoprint.plugin.EventHandlerPlugin,
 
         while not printer.is_operational() and time.time() - start_time < timeout:
             time.sleep(1)
+    
+        if printer.is_operational():
+            self._logger.error("Printer connection OK.")
+        else:
+            self._logger.error("Printer connection timed out after 2 minutes.")
+
 
     def get_update_information(self):
         return dict(
