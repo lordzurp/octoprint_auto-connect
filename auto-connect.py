@@ -19,7 +19,7 @@ class AutoConnectPlugin(octoprint.plugin.EventHandlerPlugin,
         printer = self._printer
 
         if not printer.is_operational():
-            printer.connect()
+            turnPSUOn()
 
         self._logger.info("Waiting for printer to connect...")
         timeout = 120  # 2 minutes in seconds
